@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Couples Compatibility Test</h1>
+    <form (ngSubmit)="submitForm()">
+      <div>
+        <label for="name1">Name 1:</label>
+        <input type="text" id="name1" [(ngModel)]="name1" name="name1" required>
+      </div>
+      <div *ngFor="let question of questions; let i = index">
+        <label>{{ question }}</label>
+        <select [(ngModel)]="answers1[i]" name="answer1-{{ i }}" required>
+          <option [value]="1">Option 1</option>
+          <option [value]="2">Option 2</option>
+          <option [value]="3">Option 3</option>
+          <option [value]="4">Option 4</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="name2">Name 2:</label>
+        <input type="text" id="name2" [(ngModel)]="name2" name="name2" required>
+      </div>
+      <div *ngFor="let question of questions; let i = index">
+        <label>{{ question }}</label>
+        <select [(ngModel)]="answers2[i]" name="answer2-{{ i }}" required>
+          <option [value]="1">Option 1</option>
+          <option [value]="2">Option 2</option>
+          <option [value]="3">Option 3</option>
+          <option [value]="4">Option 4</option>
+        </select>
+      </div>
+  
+      <button type="submit">Check Compatibility</button>
+    </form>
+  
+    <div *ngIf="compatibilityResult">
+      <h2>Compatibility Results:</h2>
+      <p>Name Compatibility: {{ compatibilityResult.nameCompatibility }}%</p>
+      <p>Personality Compatibility: {{ compatibilityResult.personalityCompatibility }}%</p>
+      <p>Overall Compatibility: {{ compatibilityResult.overallCompatibility }}%</p>
+    </div>
+  </div>
+  
